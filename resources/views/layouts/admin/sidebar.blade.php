@@ -67,10 +67,12 @@
                         </li>
                     @endif
                     @if(Auth::user()->isAbleTo("admin-provinces") || 
-                    Auth::user()->isAbleTo("admin-municipios")  )
+                    Auth::user()->isAbleTo("admin-municipios")  ||
+                    Auth::user()->isAbleTo("admin-categories")  )
                         <li class="nav-parent 
                             @if (Request::is('admin/provinces*') ||
-                                Request::is('admin/municipios*') 
+                                Request::is('admin/municipios*') ||
+                                Request::is('admin/categories*') 
                                 
                             ) 
                                nav-active
@@ -79,7 +81,8 @@
                             @endif">
                             <a class="nav-link
                             @if (Request::is('admin/provinces*') ||
-                                Request::is('admin/municipios*') 
+                                Request::is('admin/municipios*') ||
+                                Request::is('admin/categories*') 
                                
                             ) 
                             nav-link-active-color
@@ -102,6 +105,15 @@
                                         <a class="nav-link" href="{{ url('admin/municipios') }}">
                                             <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
                                             <span>{{ trans('municipios/admin_lang.municipios') }}</span>
+                                        </a>                        
+                                    </li>
+                                @endif
+                                @if(Auth::user()->isAbleTo("admin-categories"))
+                                    <li  @if (Request::is('admin/categories*')) class="nav-active" @endif>
+                            
+                                        <a class="nav-link" href="{{ url('admin/categories') }}">
+                                            <i class="fas fa-list" aria-hidden="true"></i>
+                                            <span>{{ trans('categories/admin_lang.categories') }}</span>
                                         </a>                        
                                     </li>
                                 @endif

@@ -81,7 +81,7 @@ class AdminMunicipioController extends Controller
 
     public function show($id)
     {
-        if (!auth()->user()->isAbleTo('admin-municipios-update')) {
+        if (!auth()->user()->isAbleTo('admin-municipios-read')) {
             app()->abort(403);
         }
         $municipio = Municipio::find($id);

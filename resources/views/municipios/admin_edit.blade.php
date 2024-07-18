@@ -60,9 +60,9 @@ $disabled= isset($disabled)?$disabled : null;
                                 </div>   
                                 <div class="col-12 col-md-6">                     
                                     <div class="form-group">
-                                        <label class='text-primary' for="province_id" class=" col-12"> {{ trans('centers/admin_lang.fields.province_id') }}<span class="text-danger">*</span></label>
+                                        <label class='text-primary' for="province_id" class=" col-12"> {{ trans('municipios/admin_lang.fields.province_id') }}<span class="text-danger">*</span></label>
                                         <select {{ $disabled }} class="form-control select2 col-12" style="width:100%" name="province_id" id="province_id">
-                                            <option value="">{{ trans('centers/admin_lang.fields.province_id_helper') }}</option>   
+                                            <option value="">{{ trans('municipios/admin_lang.fields.province_id_helper') }}</option>   
                                             @foreach ($provincesList as $province)
                                                 <option value="{{ $province->id }}" @if($municipio->province_id ==$province->id) selected @endif>{{ $province->name }}</option>
                                             @endforeach 

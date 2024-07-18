@@ -1,12 +1,12 @@
 <?php
 
-use App\Http\Controllers\AdminCategoryController;
 use App\Http\Controllers\AdminCenterController;
 use App\Http\Controllers\AdminClinicPersonalController;
 use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\AdminDiagnosiController;
 use App\Http\Controllers\AdminInsuranceCarrierController;
 use App\Http\Controllers\AdminMedicalSpecializationController;
+use App\Http\Controllers\AdminCategoryController;
 use App\Http\Controllers\AdminMunicipioController;
 use App\Http\Controllers\AdminPatientController;
 use App\Http\Controllers\AdminPatientMedicalStudieController;
@@ -182,7 +182,7 @@ Route::group(array('prefix' => 'admin', 'middleware' => ['auth', 'verified', 'ch
     Route::post('/municipios/save-filter', [AdminMunicipioController::class, 'saveFilter'])->name('admin.municipios.saveFilter');
     Route::post('/municipios/list', [AdminMunicipioController::class, 'getData'])->name('admin.municipios.getData');
     Route::delete('/municipios/{id}', [AdminMunicipioController::class, 'destroy'])->name('admin.municipios.destroy');
-
+ 
     //admin provincias
     Route::get('/provinces', [AdminProvinceController::class, 'index']);
     Route::get('/provinces/create', [AdminProvinceController::class, 'create'])->name('admin.provinces.create');
@@ -195,6 +195,22 @@ Route::group(array('prefix' => 'admin', 'middleware' => ['auth', 'verified', 'ch
     Route::post('/provinces/save-filter', [AdminProvinceController::class, 'saveFilter'])->name('admin.provinces.saveFilter');
     Route::post('/provinces/list', [AdminProvinceController::class, 'getData'])->name('admin.provinces.getData');
     Route::delete('/provinces/{id}', [AdminProvinceController::class, 'destroy'])->name('admin.provinces.destroy');
+   
+    //admin categories
+
+   Route::get('/categories', [AdminCategoryController::class, 'index']);
+   Route::get('/categories/create', [AdminCategoryController::class, 'create'])->name('admin.categories.create');
+   Route::get('/categories/{id}/edit', [AdminCategoryController::class, 'edit'])->name('admin.categories.edit');
+   Route::get('/categories/{id}/show', [AdminCategoryController::class, 'show'])->name('admin.categories.show');
+   Route::get('/categories/change-state/{id}', [AdminCategoryController::class, 'changeState'])->name('admin.categories.changeState');
+   Route::get('/categories/export-excel', [AdminCategoryController::class, 'exportExcel'])->name("admin.categories.exportExcel");
+   Route::get('/categories/remove-filter', [AdminCategoryController::class, 'removeFilter'])->name('admin.categories.removeFilter');
+   Route::patch('/categories/{id}', [AdminCategoryController::class, 'update'])->name('admin.categories.update');
+   Route::post('/categories/save-filter', [AdminCategoryController::class, 'saveFilter'])->name('admin.categories.saveFilter');
+   Route::post('/categories', [AdminCategoryController::class, 'store'])->name('admin.categories.store');
+   Route::post('/categories/save-filter', [AdminCategoryController::class, 'saveFilter'])->name('admin.categories.saveFilter');
+   Route::post('/categories/list', [AdminCategoryController::class, 'getData'])->name('admin.categories.getData');
+   Route::delete('/categories/{id}', [AdminCategoryController::class, 'destroy'])->name('admin.categories.destroy');
 
   
 

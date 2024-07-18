@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class AdminServiceRequest extends FormRequest
+class AdminCategoryRequest extends FormRequest
 {
 
     /**
@@ -14,7 +14,7 @@ class AdminServiceRequest extends FormRequest
      */
     public function authorize()
     {
-        if (!auth()->user()->isAbleTo('admin-services-create') && !auth()->user()->isAbleTo('admin-services-update')) {
+        if (!auth()->user()->isAbleTo('admin-categories-create') && !auth()->user()->isAbleTo('admin-categories-update')) {
             return false;
         }
         return true;
@@ -29,8 +29,6 @@ class AdminServiceRequest extends FormRequest
     {
         return [
             'name' => 'required',
-            'price' => 'required|numeric',
-
         ];
     }
 
@@ -43,9 +41,7 @@ class AdminServiceRequest extends FormRequest
     public function messages()
     {
         return [
-            'name.required' => trans('services/admin_lang.fields.name_required'),
-            'price.required' => trans('services/admin_lang.fields.price_required'),
-            'price.numeric' => trans('services/admin_lang.fields.price_format'),
+            'name.required' => trans('categories/admin_lang.fields.name_required'),
         ];
     }
 }
